@@ -1,0 +1,231 @@
+/* ===== RESET & DASAR ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505; /* Hitam pekat */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow: hidden; /* Biar ga ada scrollbar */
+  position: relative;
+}
+
+/* ===== 1. SPOTLIGHT INTERAKTIF ===== */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* Biar ga ngeblok klik */
+  z-index: 2;
+  /* Cahaya radial merah/pink mengikuti posisi mouse */
+  background: radial-gradient(
+    circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 80, 120, 0.08) 0%,
+    transparent 80%
+  );
+  transition: background 0.1s ease;
+}
+
+/* ===== 2. BACKGROUND GRID ===== */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  /* Garis grid tipis vertikal & horizontal */
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 12vw 100%; /* Jarak antar garis vertikal */
+  pointer-events: none;
+}
+/* Bikin bayangan halus di pinggir grid biar fokus ke tengah */
+.bg-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, #050505 90%);
+}
+
+/* ===== 3. HERO IMAGE (POHON) ===== */
+/* ===== 3. HERO VIDEO ===== */
+/* ===== 3. HERO VIDEO FULL SCREEN ===== */
+.hero-video-container {
+  position: absolute;
+  inset: 0; /* NUTUPIN SELURUH LAYAR (atas, bawah, kiri, kanan = 0) */
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ini trik buat nambahin gradient hitam di bawah */
+.hero-video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Gradient hitam dari bawah ke atas */
+  background: linear-gradient(to top, #050505 0%, transparent 40%, transparent 100%);
+  z-index: 2;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Biar video menuhin layar tanpa gepeng */
+  
+  /* TETAP PAKAI INI BIAR NYATU SAMA BG */
+  mix-blend-mode: screen; 
+  
+  /* KITA UBAH MASKING-NYA JADI FULL, KARENA VIDEO UDAH FULL SCREEN */
+  /* Kalau mau sisi kiri tetep agak gelap biar teks kebaca, biarin aja mask ini */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+  
+  opacity: 0.6; /* Dibikin agak transparan biar ga terlalu nyala */
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Biar video proporsional & ga gepeng */
+  object-position: right bottom; /* Fokus ke kanan bawah (sesuaikan dgn video lo) */
+  
+    /* Efek biar background hitam video menyatu dengan web */
+  mix-blend-mode: screen; 
+  
+  /* Efek fade di sisi kiri biar ga ada garis kotak kaku */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+  
+  /* Kasih opacity sedikit biar ga terlalu nyala */
+  opacity: 0.8; 
+}
+
+/* ===== 4. NAVIGATION ===== */
+.navbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  font-size: 13px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a, .nav-actions a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .nav-actions .sign-in:hover {
+  color: #fff;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-deploy {
+  background: #fff;
+  color: #000 !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: transform 0.2s, background 0.2s !important;
+}
+.btn-deploy:hover {
+  transform: scale(1.05);
+  background: #f0f0f0 !important;
+}
+
+/* ===== 5. HERO CONTENT ===== */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-40%);
+  z-index: 10;
+  max-width: 800px;
+}
+
+.sub-headline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.sub-headline .line {
+  display: inline-block;
+  width: 25px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.main-title {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 80px;
+}
+
+/* ===== STATS ===== */
+.stats-container {
+  display: flex;
+  gap: 50px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: lowercase;
+}
+
+.quote-literature {
+  font-family: 'Playfair Display', Georgia, serif; /* Gaya literature klasik & tajam */
+  /* Alternatif lebih puitis/ramping: font-family: 'Cormorant Garamond', serif; */
+  font-style: italic;
+  font-size: 16px; /* Sedikit dinaikkan karena font serif terlihat lebih kecil dari sans-serif */
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.85);
+}

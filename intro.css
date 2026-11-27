@@ -1,0 +1,127 @@
+/* ===== RESET & DASAR ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  height: 100vh; 
+  background: #000000;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+/* ===== LAYAR INTRO ===== */
+.intro {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+  background: #000000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.intro.hide { opacity: 0; visibility: hidden; }
+
+/* ===== WRAPPER LOGO + TEKS ===== */
+.brand {
+  display: flex; align-items: center; gap: 25px;
+  animation: idleFloat 5s ease-in-out infinite;
+  animation-delay: 1.5s; 
+}
+@keyframes idleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ===== ANIMASI LOGO ===== */
+.icon-wave {
+  width: 200px; 
+  height: 200px;
+  opacity: 0;
+  animation: logoSequence 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes logoSequence {
+  0% { opacity: 0; transform: translateX(150px) scale(0.8); }
+  40% { opacity: 1; transform: translateX(150px) scale(1); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* ===== STYLING TEKS ===== */
+.brand-text {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: flex-start; /* KUNCI: Bikin teks nempel ke kiri (sisi kanan logo) */
+  margin-top: -10px;
+  min-width: 450px; /* Bikin box-nya lebar biar ga goyang */
+}
+
+.title {
+  font-weight: 300;
+  font-size: 64px; /* KUNCI: Ukuran font dipatok mati */
+  letter-spacing: 6px;
+  color: #f8fafc;
+  line-height: 1;
+  min-height: 64px; 
+  text-align: left; /* Rata kiri */
+  white-space: nowrap; /* Biar teks panjang ga turun ke bawah */
+  font-family: 'Montserrat', 'Noto Sans', sans-serif;
+}
+
+/* Kursor berkedip ala mesin ketik */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: #f8fafc;
+  animation: blink 0.8s infinite;
+  margin-left: 4px;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.sub {
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: 2px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  line-height: 1.5;
+  margin-top: 12px;
+  min-height: 35px; 
+  text-align: left; /* Rata kiri */
+}
+
+.year {
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-top: 25px;
+  opacity: 0;
+  transition: opacity 1s ease; /* Fade in via JS */
+}
+
+/* ===== EFEK CAHAYA (GLOW) ===== */
+.intro::before {
+  content: "";
+  position: absolute;
+  width: 550px; 
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(220, 38, 38, 0.2) 0%,   
+    rgba(37, 99, 235, 0.15) 40%,  
+    transparent 70%               
+  );
+  filter: blur(60px); 
+  z-index: -1; 
+  opacity: 0;
+  transform: scale(0.8);
+  animation: glowPulse 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+  100% { opacity: 0.6; transform: scale(1); }
+} 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMPUTE™ — Distributed Compute</title>
+
+  <!-- Font mirip dengan referensi (Inter / Helvetica style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- 1. LAYAR SPOTLIGHT (Interaktif mengikuti mouse) -->
+  <div class="spotlight" id="spotlight"></div>
+
+  <!-- 2. BACKGROUND GRID -->
+  <div class="bg-grid"></div>
+
+<!-- 3. HERO VIDEO (Pohon Bergerak) -->
+<div class="hero-video-container" id="heroImage">
+  <!-- Ganti src dengan path video lo -->
+  <video autoplay loop muted playsinline class="hero-video">
+    <source src="assets/media/home_vid.mp4" type="video/mp4">
+    <!-- Opsional: tambahin webm kalau ada -->
+    <!-- <source src="assets/media/pohon-sakura.webm" type="video/webm"> -->
+  </video>
+</div>
+
+  <!-- 4. NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo">
+        <img src="assets/media/stoic_nav_logo.png" alt="Logo STOIC" class="logo-img">
+    </div>
+    
+    <div class="nav-links">
+        <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; letter-spacing: 2.5px; color: rgba(255, 255, 255, 0.9);">
+            <i>Express your ideas by actions, Shape the future with your innovations</i>
+        </p>
+
+</div>
+
+    <div class="nav-actions">
+      <a href="#" class="sign-in">Sign in</a>
+      <a href="#" class="btn-deploy">Support Us!</a>
+    </div>
+  </nav>
+
+  <!-- 5. MAIN CONTENT -->
+  <main class="hero-content">
+    <div class="sub-headline">
+      <span class="line"></span>
+      Student's Chamber to Grow Together 
+    </div>
+    
+    <h1 class="main-title">
+      Student<br>
+      Invention &amp; Inquiry<br>
+      Consortium
+    </h1>
+
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-value">On Going</div>
+        <div class="stat-label">Contingent delegates</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">On going</div>
+        <div class="stat-label">Extracurricular provision</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">1</div>
+        <div class="stat-label">Affiliated Research Schools</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">On Going</div>
+        <div class="stat-label">Community program execution</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
